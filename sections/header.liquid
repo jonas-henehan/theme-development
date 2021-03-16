@@ -1,3 +1,44 @@
+{% if section.settings.transparent_header %}
+  {% if template == 'index' %}
+    <style>
+      @media screen and (min-width: 750px) {
+
+        [id="shopify-section-header"] {
+          position: absolute;
+        } 
+
+        .site-header, .site-header__mobile-nav {
+          background-color: rgba(0,0,0,0);
+        }
+
+        .site-header__logo a {
+          color: {{ section.settings.color_transparent_header_icons }};
+        }
+
+        .site-nav a, .site-nav button {
+          color: {{ section.settings.color_transparent_header_icons }};
+        }
+
+        .site-nav a:hover, .site-nav button:hover, .site-nav button:focus {
+          color: {{ section.settings.color_transparent_header_icons }};
+          opacity: 0.8;
+        }
+
+        .site-nav__link--active .site-nav__label {
+          border-bottom-color: {{ section.settings.color_transparent_header_icons }};
+        }
+        .site-nav__link:focus .site-nav__label, .site-nav__link:not([disabled]):hover .site-nav__label {
+          border-bottom-color: {{ section.settings.color_transparent_header_icons }};
+        }
+
+        .site-header__icons-wrapper .icon {
+          color: {{ section.settings.color_transparent_header_icons }};
+        }
+      }
+    </style>
+  {% endif %}
+{% endif %}
+
 {% if section.settings.message %}
   <style>
     {% if section.settings.logo != blank %}
@@ -13,17 +54,6 @@
     {% endif %}
   </style>
 {% endif %}
-
-{% if template == 'index' %} 
-  <style>
-    @media screen and (min-width: 750px ) {
-
-      [id="shopify-section-header"] {
-        position: absolute;
-      }
-    }
-  </style>
-{% endif %} 
 
 {% include 'search-drawer' %}
 
@@ -500,6 +530,18 @@
         "zh-TW": "選單"
       },
       "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent homepage header",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "color_transparent_header_icons",
+      "label": "Transparent header icons",
+      "default": "#ffffff"
     },
     {
       "type": "header",
