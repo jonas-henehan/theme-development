@@ -4919,7 +4919,6 @@ hr {
 @media only screen and (min-width: 750px) {
   .site-header {
     padding: 0 55px;
-    background-color: rgba(0, 0, 0, 0);
   }
   .site-header.logo--center {
     padding-top: 30px;
@@ -6348,12 +6347,6 @@ hr {
     -ms-align-items: center;
     -o-align-items: center;
     align-items: center;
-  }
-}
-@media only screen and (min-width: 750px) {
-  .site-header__mobile-nav {
-    background-color: rgba(0, 0, 0, 0);
-    padding: 0;
   }
 }
 
