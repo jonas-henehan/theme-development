@@ -2605,7 +2605,6 @@ textarea {
 .site-nav {
   text-align: right;
 }
-
 /*================ Site Nav Links ================*/
 .site-nav__link.site-nav--active-dropdown {
   border: 1px solid var(--color-border);
@@ -5019,6 +5018,10 @@ hr {
 .site-header__search,
 .site-header__account {
   position: relative;
+}
+
+.site-header__icon {
+  font-size: 0.85em;
 }
 
 .site-header__search.site-header__icon {
