@@ -1726,6 +1726,7 @@ symbol.icon:not(.icon--full-color) .icon-error__symbol {
   fill: #ffffff;
 }
 
+/*================ Error Icons ================*/
 /*================ Payment Icons ================*/
 .payment-icons {
   -moz-user-select: none;
@@ -2604,6 +2605,7 @@ textarea {
 
 .site-nav {
   text-align: right;
+  padding-right: 45px;
 }
 /*================ Site Nav Links ================*/
 .site-nav__link.site-nav--active-dropdown {
@@ -4998,6 +5000,12 @@ hr {
   }
 }
 
+@media screen and (max-width: 749px) {
+  .icon__text {
+    display: none;
+  }
+}
+
 .site-header__icons-wrapper {
   position: relative;
   display: -webkit-flex;
@@ -5036,6 +5044,12 @@ hr {
 
 .site-header__search-toggle {
   display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .site-header__search-toggle--mobile {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 750px) {
