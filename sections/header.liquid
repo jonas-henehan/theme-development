@@ -154,20 +154,16 @@ to the header-logo snippet file
         <div class="site-header__icons-wrapper">
 
           <button type="button" class="btn--link site-header__icon site-header__search-toggle js-drawer-open-top" data-predictive-search-open-drawer>
-            <div class="site-header__search-toggle--mobile">
-              <span class="visually-hidden">{{ 'layout.navigation.search' | t }}</span>
-              {% include 'icon-search' %}
-            </div>
             <span class="icon__text">{{ 'layout.navigation.search' | t }}</span>
           </button>
 
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
-              <a href="{{ routes.account_url }}" class="site-header__icon site-header__account small--hide">
+              <a href="{{ routes.account_url }}" class="site-header__icon site-header__account">
                 <span class="icon__text">{{ 'layout.customer.account' | t }}</span>
               </a>
             {% else %}
-              <a href="{{ routes.account_login_url }}" class="site-header__icon site-header__account small--hide">
+              <a href="{{ routes.account_login_url }}" class="site-header__icon site-header__account">
                 <span class="icon__text">{{ 'layout.customer.log_in' | t }}</span>
               </a>
             {% endif %}
@@ -285,65 +281,6 @@ to the header-logo snippet file
             {% endif %}
           </li>
         {% endfor %}
-
-        {% comment %} 
-          Adds a drop-down parent with customer account links
-        {% endcomment %}
-        {% if shop.customer_accounts_enabled %}
-          {%- assign parent_title = 'layout.customer.menu_link' | t -%}
-          {% if customer %}
-            {%- assign link_url = routes.account_url -%}
-            {%- assign link_title = 'layout.customer.account' | t -%}
-          {% else %}
-            {%- assign link_url = routes.account_login_url -%}
-            {%- assign link_title = 'layout.customer.log_in' | t -%}
-          {% endif %}
- 
-          <li class="mobile-nav__item border-top">
-            {% capture child_list_handle %}{{ link_url.handle }}-{{ outerLoopIndex }}{% endcapture %}
-            <button type="button" class="btn--link js-toggle-submenu mobile-nav__link{% if link.child_active %} mobile-nav__link--active{% endif %}" data-target="{{ child_list_handle }}" data-level="1" aria-expanded="false">
-              <span class="mobile-nav__label">{{ parent_title }}</span>
-              <div class="mobile-nav__icon">
-                {% include 'icon-chevron-right' %}
-              </div>
-            </button>
-            <ul class="mobile-nav__dropdown" data-parent="{{ child_list_handle }}" data-level="2">
-              <li class="visually-hidden" tabindex="-1" data-menu-title="2">
-                {{- link_title }} {{ 'layout.navigation.menu' | t -}}
-              </li>
-              <li class="mobile-nav__item border-bottom">
-                <div class="mobile-nav__table">
-                  <div class="mobile-nav__table-cell mobile-nav__return">
-                    <button class="btn--link js-toggle-submenu mobile-nav__return-btn" type="button" aria-expanded="true" aria-label="{{ parent_title }}">
-                      {% include 'icon-chevron-left' %}
-                    </button>
-                  </div>
-                  <span class="mobile-nav__sublist-link mobile-nav__sublist-header mobile-nav__sublist-header--main-nav-parent">
-                    <span class="mobile-nav__label">{{ parent_title }}</span>
-                  </span>
-                </div>
-              </li>
-              <li class="mobile-nav__item{% unless customer %} border-bottom{% endunless %}">
-                <a href="{{ link_url }}"
-                   class="mobile-nav__sublist-link"
-                   {% if link.current %} aria-current="page"{% endif %}
-                   >
-                  <span class="mobile-nav__label">{{ link_title }}</span>
-                </a>
-              </li>
-              {% unless customer %}
-                <li class="mobile-nav__item">
-                  <a href="{{ routes.account_register_url }}"
-                     class="mobile-nav__sublist-link"
-                     {% if link.current %} aria-current="page"{% endif %}
-                     >
-                    <span class="mobile-nav__label">{{ 'layout.customer.register' | t }}</span>
-                  </a>
-                </li>
-              {% endunless %}
-            </ul>
-          </li>
-        {% endif %}
       </ul>
     </nav>
   </header>
