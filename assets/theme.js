@@ -9670,3 +9670,32 @@ function removeImageLoadingAnimation(image) {
     imageWrapper.removeAttribute("data-image-loading-animation");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  var slideshowToggles = document.querySelectorAll(
+    ".slideshow__text-content-control"
+  );
+
+  slideshowToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      var slideshowTextWrapper = document.querySelectorAll(
+        ".slideshow__text-content-wrapper"
+      );
+      var slideshowText = document.querySelectorAll(
+        ".slideshow__text-content-list"
+      );
+
+      slideshowToggles.forEach((item) => {
+        item.classList.toggle("slideshow__text-content-control-active");
+      });
+
+      slideshowTextWrapper.forEach((item) => {
+        item.classList.toggle("slideshow__text-content-wrapper-active");
+      });
+
+      slideshowText.forEach((item) => {
+        item.classList.toggle("slideshow__text-content-list-active");
+      });
+    });
+  });
+});
