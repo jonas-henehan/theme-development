@@ -158,13 +158,13 @@ to the header-logo snippet file
               <span class="visually-hidden">{{ 'layout.navigation.search' | t }}</span>
               {% include 'icon-search' %}
             </div>
-            <span class="icon__text">{{ 'layout.navigation.search' | t }}</span>
+            <span class="icon__text small--hide">{{ 'layout.navigation.search' | t }}</span>
           </button>
 
           {% if shop.customer_accounts_enabled %}
             {% if customer %}
               <a href="{{ routes.account_url }}" class="site-header__icon site-header__account small--hide">
-                <span class="icon__text">{{ 'layout.customer.account' | t }}</span>
+                <span class="icon__text ">{{ 'layout.customer.account' | t }}</span>
               </a>
             {% else %}
               <a href="{{ routes.account_login_url }}" class="site-header__icon site-header__account small--hide">
