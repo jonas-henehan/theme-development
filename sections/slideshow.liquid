@@ -91,25 +91,28 @@
                           </span>
                         </li>
                       {%- endunless -%}
+
+                      <li>
+                        {%- assign show_link_button = false -%}
+                        {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                          {%- assign show_link_button = true -%}
+                        {%- endif -%}
+                        {%- if show_link_button -%}
+                          <div class="slideshow__btn-wrapper{% if block.settings.slide_title != blank or block.settings.subheading != blank %} slideshow__btn-wrapper--push{% endif %}">
+                            <a href="{{ block.settings.button_link }}" class="btn slideshow__btn">
+                              {{ block.settings.button_label | escape }}
+                            </a>
+                          </div>
+                        {%- endif -%}
+                      </li>
                     </ul>
+                    
                     <button class="slideshow__text-content-control medium-up--hide">
                       <div class="slideshow__icon-open-close-wrapper">
                         {% include 'icon-open-close' %}
                       </div>
                     </button>
                   {% endunless %}
-
-                  {%- assign show_link_button = false -%}
-                  {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
-                    {%- assign show_link_button = true -%}
-                  {%- endif -%}
-                  {%- if show_link_button -%}
-                    <div class="slideshow__btn-wrapper{% if block.settings.slide_title != blank or block.settings.subheading != blank %} slideshow__btn-wrapper--push{% endif %}">
-                      <a href="{{ block.settings.button_link }}" class="btn slideshow__btn">
-                        {{ block.settings.button_label | escape }}
-                      </a>
-                    </div>
-                  {%- endif -%}
                 </div>
               </div>
             </div>
